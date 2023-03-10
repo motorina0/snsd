@@ -27,7 +27,9 @@
                 <td> My Public Key</td>
                 <td> </td>
                 <td><input onclick="showPublicKey()" type="button" value="Get Public Key"></td>
-                <td><p id="my-public-key"></p></td>
+                <td>
+                    <p id="my-public-key"></p>
+                </td>
             </tr>
             <tr>
                 <td></td>
@@ -74,15 +76,16 @@
             if (!signer) {
                 return alert('You are not connected to device')
             }
-            signer.getPublicKey()
+            const text = document.getElementById("others-pubkey").value
+            signer.getSharedSecret(text)
         }
 
         async function showPublicKey() {
             if (!signer) {
                 return alert('You are not connected to device')
             }
-            const text = document.getElementById("others-pubkey").value
-            signer.getPublicKey(text)
+
+            signer.getPublicKey()
         }
 
     </script>
